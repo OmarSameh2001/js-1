@@ -3,18 +3,24 @@ function sort() {
     b = 4,
     c = 5;
 
-  if (a >= b && a >= c && b >= c) {
-    alert(`Sorted Numbers: ` + `${a}, ${b}, ${c}`);
-  } else if (a >= b && a >= c && c >= b) {
-    alert(`Sorted Numbers: ` + `${a}, ${c}, ${b}`);
-  } else if (b >= a && b >= c && a >= c) {
-    alert(`Sorted Numbers: ` + `${b}, ${a}, ${c}`);
-  } else if (b >= a && b >= c && c >= a) {
-    alert(`Sorted Numbers: ` + `${b}, ${c}, ${a}`);
-  } else if (c >= a && c >= b && a >= b) {
-    alert(`Sorted Numbers: ` + `${c}, ${a}, ${b}`);
+  if (a >= b && a >= c) {
+    if (b >= c) {
+      alert(`Sorted Numbers: ` + `${a}, ${b}, ${c}`);
+    } else {
+      alert(`Sorted Numbers: ` + `${a}, ${c}, ${b}`);
+    }
+  } else if (b >= a && b >= c) {
+    if (a >= c) {
+      alert(`Sorted Numbers: ` + `${b}, ${a}, ${c}`);
+    } else {
+      alert(`Sorted Numbers: ` + `${b}, ${c}, ${a}`);
+    }
   } else {
-    alert(`Sorted Numbers: ` + `${c}, ${b}, ${a}`);
+    if (a >= b) {
+      alert(`Sorted Numbers: ` + `${c}, ${a}, ${b}`);
+    } else {
+      alert(`Sorted Numbers: ` + `${c}, ${b}, ${a}`);
+    }
   }
 }
 
@@ -45,12 +51,12 @@ function multiple() {
 }
 
 function game() {
-  var num = Math.floor(Math.random() * 10);
+  var num = Math.floor(Math.random() * 10) + 1;
   console.log(num);
   for (var tries = 0; tries < 3; tries++) {
-    var guess = prompt("Guess a number between 1 and 10:");
+    var guess = parseInt(prompt("Guess a number between 1 and 10:"));
 
-    if (guess == num) {
+    if (guess === num) {
       alert(`Good Work! The number is: ${num}`);
       return;
     } else if (tries < 2) {
